@@ -84,15 +84,22 @@ tbody > tr:nth-child(2n) {
 
     .sortWidget.is-active::after {
       display: inline-block;
-      width: 1.5em;
-      content: '⯅';
+      content: '';
+      width: 1em;
+      height: 0.8em;
+      margin-left: 0.5em;
       text-align: center;
+      border: 0.5em solid transparent;
     }
 
     .sortWidget.is-ascending::after {
-      content: '⯅';
+      border-top-width: 0;
+      border-bottom-width: 0.8em;
+      border-bottom-color: currentColor;
     }
 
     .sortWidget.is-descending::after {
-      content: '⯆';
+      border-bottom-width: 0;
+      border-top-width: 0.8em;
+      border-top-color: currentColor;
     }
