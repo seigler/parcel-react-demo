@@ -5,7 +5,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "parcel build src/index.html && git-directory-deploy --directory dist/"
+    "deploy": "rimraf ./dist && parcel build src/index.html && git-directory-deploy --directory dist/"
   },
   "author": "Joshua Seigler",
   "license": "MIT",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "git-directory-deploy": "^1.5.1",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "rimraf": "^3.0.0"
   }
 }
