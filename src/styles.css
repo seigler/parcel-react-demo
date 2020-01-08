@@ -63,10 +63,15 @@ footer {
   padding: 1rem 0.5em 0.25em;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 th {
   text-align: left;
   vertical-align: top;
   line-height: 1;
+  padding: 0 0 0 0.1rem;
   border-bottom: 1px solid gray;
 }
 
@@ -74,8 +79,12 @@ tr.subHeading {
   font-size: 0.8em;
 }
 
+  tr.subHeading th {
+    line-height: 1.25;
+  }
+
 td {
-  padding: 0 1em 0 0;
+  padding: 0.1rem 1em 0.1rem 0.1rem;
 }
 
 tbody > tr:nth-child(2n) {
@@ -94,21 +103,21 @@ tbody > tr:nth-child(2n) {
     .sortWidget.is-active::after {
       display: inline-block;
       content: '';
-      width: 1em;
-      height: 0.8em;
-      margin-left: 0.5em;
+      width: 1ex;
+      height: 1ex;
+      margin: 0 0.25em 0 calc(1.25em - 1ex);
       text-align: center;
-      border: 0.5em solid transparent;
+      border: 0.5ex solid transparent;
     }
 
     .sortWidget.is-ascending::after {
       border-top-width: 0;
-      border-bottom-width: 0.8em;
+      border-bottom-width: 1ex;
       border-bottom-color: currentColor;
     }
 
     .sortWidget.is-descending::after {
       border-bottom-width: 0;
-      border-top-width: 0.8em;
+      border-top-width: 1ex;
       border-top-color: currentColor;
     }
