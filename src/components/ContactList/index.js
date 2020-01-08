@@ -5,13 +5,19 @@ import SortWidget from '../SortWidget';
 export default function ({ contacts }) {
   const [sort, setSort] = useState({ index: 3, ascending: true });
   const { index, ascending } = sort;
-  const sortedContacts = contacts.sort((a, b) => {
+  const sortedContacts = contacts.slice(0).sort((a, b) => {
     if (a[index] > b[index]) {
       return ascending ? 1 : -1;
     } else if (a[index] < b[index]) {
       return ascending ? -1 : 1;
-    } else {
-      return 0;
+    } else { // secondary sort by last name
+        if (a[3] > b[3]) {
+          return ascending ? 1 : -1;
+        } else if (a[3] < b[3]) {
+          return ascending ? -1 : 1;
+        } else {
+          return 0;
+        }
     }
   });
   return (
