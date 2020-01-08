@@ -23,6 +23,31 @@ main {
   line-height: 1.5;
 }
 
+.status {
+  position: fixed;
+  z-index: 1;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+}
+
+.status.is-loading {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.status.is-loading::after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid currentColor;
+  border-color: currentColor transparent currentColor transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
 footer {
   text-align: right;
   font-size: 0.8em;

@@ -33,7 +33,7 @@ function mapContacts (contact) {
   const birthday = new Date(dob).setFullYear(0);
   const today = new Date().setFullYear(0);
   const birthdayMessage = (birthday === today
-    ? 'Today'
+    ? 'Today!'
     : (birthday < today
       ? 'Past'
       : 'Future'
