@@ -31730,12 +31730,166 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"index.js":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"../node_modules/react-dom/cjs/react-dom.development.js"}],"components/Status.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _default(_ref) {
+  var status = _ref.status;
+  return _react.default.createElement("div", {
+    className: status
+  }, status);
+}
+},{"react":"../node_modules/react/index.js"}],"components/SortWidget.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+
+var _react = _interopRequireDefault(require("react"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _default(_ref) {
+  var myIndex = _ref.index,
+      sort = _ref.sort,
+      setSort = _ref.setSort,
+      children = _ref.children;
+  var index = sort.index,
+      ascending = sort.ascending;
+  var myAscending = index === myIndex ? ascending : false; // default value for myAscending will be negated
+
+  var classList = ['sortWidget'];
+
+  if (index === myIndex) {
+    classList.push('is-active');
+    classList.push(ascending ? 'is-ascending' : 'is-descending');
+  }
+
+  return _react.default.createElement("div", {
+    className: classList.join(' '),
+    onClick: function onClick() {
+      return setSort({
+        index: myIndex,
+        ascending: !myAscending
+      });
+    }
+  }, children);
+}
+},{"react":"../node_modules/react/index.js"}],"components/ContactList/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = _default;
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _SortWidget = _interopRequireDefault(require("../SortWidget"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _default(_ref) {
+  var contacts = _ref.contacts;
+
+  var _useState = (0, _react.useState)({
+    index: 3,
+    ascending: true
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      sort = _useState2[0],
+      setSort = _useState2[1];
+
+  var index = sort.index,
+      ascending = sort.ascending;
+  var sortedContacts = contacts.sort(function (a, b) {
+    if (a[index] > b[index]) {
+      return ascending ? 1 : -1;
+    } else if (a[index] < b[index]) {
+      return ascending ? -1 : 1;
+    } else {
+      return 0;
+    }
+  });
+  return _react.default.createElement("table", null, _react.default.createElement("thead", null, _react.default.createElement("tr", null, _react.default.createElement("th", {
+    rowSpan: "2"
+  }, _react.default.createElement(_SortWidget.default, {
+    index: 1,
+    sort: sort,
+    setSort: setSort
+  }, "Gender")), _react.default.createElement("th", {
+    colSpan: "2"
+  }, "Name"), _react.default.createElement("th", {
+    rowSpan: "2"
+  }, _react.default.createElement(_SortWidget.default, {
+    index: 4,
+    sort: sort,
+    setSort: setSort
+  }, "Country")), _react.default.createElement("th", {
+    rowSpan: "2"
+  }, _react.default.createElement(_SortWidget.default, {
+    index: 5,
+    sort: sort,
+    setSort: setSort
+  }, "Date of Birth")), _react.default.createElement("th", {
+    rowSpan: "2"
+  }, _react.default.createElement(_SortWidget.default, {
+    index: 6,
+    sort: sort,
+    setSort: setSort
+  }, "Birthday"))), _react.default.createElement("tr", {
+    className: "subHeading"
+  }, _react.default.createElement("th", null, _react.default.createElement(_SortWidget.default, {
+    index: 2,
+    sort: sort,
+    setSort: setSort
+  }, "First")), _react.default.createElement("th", null, _react.default.createElement(_SortWidget.default, {
+    index: 3,
+    sort: sort,
+    setSort: setSort
+  }, "Last")))), _react.default.createElement("tbody", null, sortedContacts.map(function (c) {
+    return _react.default.createElement("tr", {
+      key: c[0]
+    }, c.slice(1).map(function (x, i) {
+      return _react.default.createElement("td", {
+        key: i
+      }, x);
+    }));
+  })));
+}
+},{"react":"../node_modules/react/index.js","../SortWidget":"components/SortWidget.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
+
+var _Status = _interopRequireDefault(require("./components/Status"));
+
+var _ContactList = _interopRequireDefault(require("./components/ContactList"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31759,19 +31913,43 @@ function App(_ref) {
       contacts = _useState2[0],
       setContacts = _useState2[1];
 
+  var _useState3 = (0, _react.useState)('loading'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      status = _useState4[0],
+      setStatus = _useState4[1];
+
   if (contacts === undefined) {
-    setContacts(['a']);
-    return _react.default.createElement("div", {
-      className: "loading"
-    }, "Loading");
-  } else {
-    var list = contacts.map(function (c) {
-      return _react.default.createElement("div", {
-        key: c
-      }, c);
+    window.fetch('https://randomuser.me/api/?results=20&nat=us,ca').then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      return setContacts(json.results.map(mapContacts));
+    }).catch(function (error) {
+      console.error(error);
+      setStatus('error');
     });
-    return list;
+    return _react.default.createElement(_Status.default, {
+      status: status
+    });
+  } else {
+    return _react.default.createElement(_ContactList.default, {
+      contacts: contacts
+    });
   }
+}
+
+function mapContacts(contact) {
+  var uuid = contact.login.uuid,
+      gender = contact.gender,
+      _contact$name = contact.name,
+      first = _contact$name.first,
+      last = _contact$name.last,
+      country = contact.location.country,
+      dobString = contact.dob.date;
+  var dob = new Date(dobString);
+  var birthday = new Date(dob).setFullYear(0);
+  var today = new Date().setFullYear(0);
+  var birthdayMessage = birthday === today ? 'Today' : birthday < today ? 'Past' : 'Future';
+  return [uuid, gender, first, last, country, dob.toDateString(), birthdayMessage];
 }
 
 var mountNode = document.getElementById('app');
@@ -31779,7 +31957,7 @@ var mountNode = document.getElementById('app');
 _reactDom.default.render(_react.default.createElement(App, {
   numContacts: 20
 }), mountNode);
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","./components/Status":"components/Status.js","./components/ContactList":"components/ContactList/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -31807,7 +31985,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44969" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36951" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
