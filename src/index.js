@@ -30,9 +30,10 @@ function mapContacts (contact) {
     dob: { date: dobString }
   } = contact;
   const dob = new Date(dobString);
-  const birthday = new Date(dob).setFullYear(0);
-  const today = new Date().setFullYear(0);
-  const birthdayMessage = (birthday === today
+  const birthday = new Date(0, dob.getMonth(), dob.getDate());
+  const now = new Date();
+  const today = new Date(0, now.getMonth(), now.getDate());
+  const birthdayMessage = (birthday.getTime() === today.getTime()
     ? 'Today!'
     : (birthday < today
       ? 'Past'
