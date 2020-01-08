@@ -5,7 +5,9 @@
   "scripts": {
     "start": "parcel src/index.html",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "rimraf ./dist && parcel build src/index.html && git-directory-deploy --directory dist/"
+    "clean": "rimraf ./dist",
+    "build": "parcel build src/index.html --public-url replacethiswithadot && sed -i \"s/replacethiswithadot/./g\" dist/index.html",
+    "deploy": "npm run clean && npm run build && git-directory-deploy --directory dist/"
   },
   "author": "Joshua Seigler",
   "license": "MIT",
