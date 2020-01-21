@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import SortWidget from '../SortWidget';
+import SortWidget from './SortWidget';
 
 export default function ({ contacts }) {
   const [sort, setSort] = useState({ index: 3, ascending: true });
