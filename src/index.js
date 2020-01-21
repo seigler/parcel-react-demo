@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import Status from './components/Status';
@@ -7,7 +7,8 @@ import ContactList from './components/ContactList';
 function App ({ numContacts }) {
   const [contacts, setContacts] = useState();
   const [status, setStatus] = useState('loading');
-  if (contacts === undefined) {
+
+  useEffect(() => {
     window.fetch('https://randomuser.me/api/?results=20&nat=us,ca')
       .then(response => response.json())
       .then(json => setContacts(json.results.map(mapContacts)))
@@ -15,6 +16,9 @@ function App ({ numContacts }) {
         console.error(error);
         setStatus('error');
       });
+  }, [numContacts]);
+
+  if (contacts === undefined) {
     return <Status status={status} />;
   } else {
     return <ContactList contacts={contacts} />;
